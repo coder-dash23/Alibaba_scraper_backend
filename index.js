@@ -15,7 +15,16 @@ if (!process.env.AGENTQL_API_KEY) {
 }
 
 app.use(json()); // Use express.json() to parse JSON request bodiess
-app.use(cors({origin: true, credentials: true}));
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow all origins or specify trusted domains
+    callback(null, true); 
+  },
+  credentials: true, // Allow cookies and credentials to be sent with the request
+};
+
+app.use(cors(corsOptions));
+
 
 // Endpoint to scrape using AgentQL API
 
