@@ -23,6 +23,12 @@ app.use(function (request, response, next) {
 app.use(json()); // Use express.json() to parse JSON request bodies
 
 // Endpoint to scrape using AgentQL API
+
+app.post("/", async (req, res) => {
+<h2>Hello World!</h2>
+});
+
+
 app.post("/scrapeAlibabaSingle", async (req, res) => {
   const { urls } = req.body;
 
