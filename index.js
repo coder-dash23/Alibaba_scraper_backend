@@ -1,4 +1,4 @@
-import express, { json } from "express";
+import express from "express";
 import cors from "cors";
 import fetch from "node-fetch"; // For server-side fetch
 import { config } from "dotenv";
@@ -20,13 +20,19 @@ app.use(function (request, response, next) {
   next();
 });
 
-app.use(json()); // Use express.json() to parse JSON request bodies
+app.use(express.json()); // Use express.json() to parse JSON request bodies
 
 // Endpoint to scrape using AgentQL API
 
 app.post("/", async (req, res) => {
   res.json("Hello from server!" );
 });
+
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 
 
 app.post("/scrapeAlibabaSingle", async (req, res) => {
