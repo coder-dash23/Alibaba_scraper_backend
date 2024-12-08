@@ -25,7 +25,7 @@ app.use(json()); // Use express.json() to parse JSON request bodies
 // Endpoint to scrape using AgentQL API
 
 app.post("/", async (req, res) => {
-  console.log("Hello World");
+  res.json("Hello from server!" );
 });
 
 
