@@ -14,8 +14,8 @@ if (!process.env.AGENTQL_API_KEY) {
   process.exit(1);
 }
 
-app.use(json()); // Use express.json() to parse JSON request bodies
-app.use(cors());
+app.use(json()); // Use express.json() to parse JSON request bodiess
+app.use(cors({origin: true, credentials: true}));
 
 // Endpoint to scrape using AgentQL API
 
