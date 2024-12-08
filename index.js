@@ -229,11 +229,6 @@ app.post("/scrapeAlibabaAll", async (req, res) => {
         // Process products to prepend base URL to product_url
         const modifiedProducts = data.data.products.map((product) => {
           let productUrl = product.product_url;
-          // If the URL is relative, prepend the base Amazon URL
-          if (!productUrl.startsWith("http")) {
-            productUrl = `${productUrl}`;
-          }
-
           return {
             ...product,
             product_url: productUrl, // Replace with the new product URL
