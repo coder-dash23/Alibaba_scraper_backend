@@ -5,7 +5,7 @@ import { config } from "dotenv";
 
 config();
 
-const port = 6121;
+const port = 5001;
 
 const app = express();
 // Validate AgentQL API Key
@@ -18,13 +18,12 @@ app.use(json()); // Use express.json() to parse JSON request bodiess
 const corsOptions = {
   origin: (origin, callback) => {
     // Allow all origins or specify trusted domains
-    callback(null, true); 
+    callback(null, true);
   },
   credentials: true, // Allow cookies and credentials to be sent with the request
 };
 
 app.use(cors(corsOptions));
-
 
 // Endpoint to scrape using AgentQL API
 
@@ -229,18 +228,12 @@ app.post("/scrapeAlibabaAll", async (req, res) => {
         // Process products to prepend base URL to product_url
         const modifiedProducts = data.data.products.map((product) => {
           let productUrl = product.product_url;
-        
-          // Check and remove invalid prefixes
-          if (productUrl.startsWith("https://////") || productUrl.startsWith("https://\\/\\/")) {
-            productUrl = productUrl.replace(/^https:\/+/, "https://");
-          }
-        
           return {
             ...product,
-            product_url: productUrl, // Replace with the cleaned product URL
+            product_url: productUrl, // Replace with the new product URL
           };
         });
-        
+
         result.push({
           url: url,
           products: modifiedProducts,
