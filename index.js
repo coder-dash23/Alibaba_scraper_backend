@@ -1,11 +1,11 @@
-import express from "express";
+import express, { json } from "express";
 import cors from "cors";
 import fetch from "node-fetch"; // For server-side fetch
 import { config } from "dotenv";
 
 config();
 
-const port = 5000;
+const port = 6121;
 
 const app = express();
 // Validate AgentQL API Key
@@ -14,18 +14,13 @@ if (!process.env.AGENTQL_API_KEY) {
   process.exit(1);
 }
 
-app.use(cors({
-  origin: ["https://alibaba-scraper-pwhs.vercel.app"],
-  methods: ["POST", "GET"],
-  credentials: true
-}));
-
-app.use(express.json()); // Use express.json() to parse JSON request bodies
+app.use(json()); // Use express.json() to parse JSON request bodies
+app.use(cors());
 
 // Endpoint to scrape using AgentQL API
 
 app.post("/", async (req, res) => {
-  res.json("Hello from server!" );
+  res.json("Hello from server!");
 });
 
 app.post("/scrapeAlibabaSingle", async (req, res) => {
