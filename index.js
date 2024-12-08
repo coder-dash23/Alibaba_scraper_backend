@@ -416,4 +416,5 @@ app.post("/scrapeAmazonSingle", async (req, res) => {
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
+  console.log(`My ENV: ${process.env.AGENTQL_API_KEY}`);
 });
