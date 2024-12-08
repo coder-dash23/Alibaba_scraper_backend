@@ -15,7 +15,7 @@ if (!process.env.AGENTQL_API_KEY) {
 }
 
 app.use(cors({
-  origin: ["https://alibaba-scraper-pwhs.vercel.app"],
+  origin: ["https://alibaba-scraper-pwhs.vercel.app/"],
   methods: ["POST", "GET"],
   credentials: true
 }));
