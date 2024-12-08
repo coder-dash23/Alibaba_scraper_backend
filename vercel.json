@@ -1,26 +1,12 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "*.js",
-      "use": "@vercel/node"
-    }
+    {"src": "*.js", "use": "@vercel/node"}
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Content-Security-Policy",
-          "value": "script-src 'self' https://vercel.live; default-src 'none';"
-        }
-      ]
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
