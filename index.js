@@ -229,12 +229,18 @@ app.post("/scrapeAlibabaAll", async (req, res) => {
         // Process products to prepend base URL to product_url
         const modifiedProducts = data.data.products.map((product) => {
           let productUrl = product.product_url;
+        
+          // Check and remove invalid prefixes
+          if (productUrl.startsWith("https://////") || productUrl.startsWith("https://\\/\\/")) {
+            productUrl = productUrl.replace(/^https:\/+/, "https://");
+          }
+        
           return {
             ...product,
-            product_url: productUrl, // Replace with the new product URL
+            product_url: productUrl, // Replace with the cleaned product URL
           };
         });
-
+        
         result.push({
           url: url,
           products: modifiedProducts,
