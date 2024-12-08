@@ -14,12 +14,12 @@ if (!process.env.AGENTQL_API_KEY) {
   process.exit(1);
 }
 
-// app.use(cors({
-//   origin: ["https://alibaba-scraper.vercel.app"],
-//   methods: ["POST", "GET"],
-//   credentials: true
-// }));
-app.use(cors());
+app.use(cors({
+  origin: [""],
+  methods: ["POST", "GET"],
+  credentials: true
+}));
+
 app.use(json()); // Use express.json() to parse JSON request bodies
 
 // Endpoint to scrape using AgentQL API
