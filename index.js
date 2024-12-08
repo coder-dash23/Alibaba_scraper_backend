@@ -14,11 +14,11 @@ if (!process.env.AGENTQL_API_KEY) {
   process.exit(1);
 }
 
-app.use(cors({
-  origin: ["https://alibaba-scraper-pwhs.vercel.app/"],
-  methods: ["POST", "GET"],
-  credentials: true
-}));
+app.use(function (request, response, next) {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(json()); // Use express.json() to parse JSON request bodies
 
