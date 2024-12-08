@@ -28,13 +28,6 @@ app.post("/", async (req, res) => {
   res.json("Hello from server!" );
 });
 
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
-
-
 app.post("/scrapeAlibabaSingle", async (req, res) => {
   const { urls } = req.body;
 
